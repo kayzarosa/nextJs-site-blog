@@ -10,7 +10,6 @@ import {
 } from "@/components/ui/breadcrumb";
 import { Avatar } from "@/components/avatar";
 import { MarkDown } from "@/components/markdown";
-import { Button } from "@/components/ui/button";
 import { PostShare } from "./components/post-share";
 
 export type PostPageProps = {
