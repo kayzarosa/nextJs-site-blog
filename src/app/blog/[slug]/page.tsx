@@ -1,6 +1,6 @@
 import { PostPage } from "@/templates/blog";
 import { allPosts } from "contentlayer/generated";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 type BlogPostPageProps = {
