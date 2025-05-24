@@ -11,20 +11,14 @@ import {
 import { Avatar } from "@/components/avatar";
 import { MarkDown } from "@/components/markdown";
 import { Button } from "@/components/ui/button";
-import { useShare } from "@/hooks";
+import { PostShare } from "./components/post-share";
 
 export type PostPageProps = {
   post: Post;
-}
+};
 
 export const PostPage = ({ post }: PostPageProps) => {
   const postUrl = `https://site.set/blog/${post.slug}`;
-
-  const { shareButtons } = useShare({
-    url: postUrl,
-    title: post?.title,
-    text: post?.description,
-  });
 
   return (
     <main className="py-20 text-gray-100">
@@ -88,30 +82,11 @@ export const PostPage = ({ post }: PostPageProps) => {
               </div>
             </article>
 
-            <aside className="space-y-6">
-              <div className="rounder-lg bg-gray-700">
-                <h2 className="hidden md:block mb-4 text-heading-xs text-gray-100">
-                  Compartilhar
-                </h2>
-
-                <div className="flex justify-between md:flex-col gap-2">
-                  {shareButtons.map((provider) => (
-                    <Button
-                      key={provider.provider}
-                      onClick={() => provider.action()}
-                      variant="outline"
-                      className="w-fit md:w-full justify-start gap-2"
-                      title={provider.name}
-                    >
-                      {provider.icon}
-                      <span className="hidden md:block">
-                        {provider.name}
-                      </span>
-                    </Button>
-                  ))}
-                </div>
-              </div>
-            </aside>
+            <PostShare
+              url={postUrl}
+              description={post.description}
+              title={post.title}
+            />
           </div>
         )}
       </div>
